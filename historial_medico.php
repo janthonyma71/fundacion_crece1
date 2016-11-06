@@ -38,17 +38,23 @@ include("sql/mostrar.php");
                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
               </a>
             <ul class="dropdown-menu dropdown-user">
-              <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil  (<?php echo $nombre.' '.$apellido;?> )</a>
-                          </li>
-              <li><a href="modulos/herramientas.php"><i class="fa fa-gear fa-fw"></i>Herramientas</a>
-                          </li>
+              <li>
+                <a href="#"><i class="fa fa-user fa-fw"></i>Perfil(<?php echo $nombre.' '.$apellido;?> )
+                </a>
+              </li>
+              <li>
+                <a href="modulos/herramientas.php"><i class="fa fa-gear fa-fw"></i>Herramientas
+                </a>
+              </li>
               <li class="divider"></li>
-              <li><a href="modulos/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesion</a>
-                          </li>
-              </ul>
-              <!-- /.dropdown-user -->
+              <li>
+                <a href="modulos/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesion
+                </a>
+              </li>
+            </ul>
+            <!-- /.dropdown-user -->
           </li>
-                <!-- /.dropdown -->
+          <!-- /.dropdown -->
         </ul>
     </nav>
       <!--/. NAV TOP  -->
@@ -62,103 +68,92 @@ include("sql/mostrar.php");
               <a  href="agregar_paciente.php"><i class="fa fa-edit"></i> Agregar paciente</a>
             </li>
             <li>
-              <a class="active-menu" href="historial_medico.php"><i class="fa fa-bar-chart-o"></i> Historial Medico</a>
+              <a class="active-menu" href="historial_medico.php"><i class="fa fa-bar-chart-o"></i>Historial Medico</a>
             </li>
           </ul>
         </div>
       </nav>
-        <!-- /. NAV SIDE  -->
-        <div id="page-wrapper" >
-            <div id="page-inner">
-             <div class="row">
-                    <div class="col-md-12">
-                        <h1 class="page-header">
-                            Tabla De Pacientes <small></small>
-                        </h1>
-                    </div>
-                </div> 
-                 <!-- /. ROW  -->
-               
+      <!-- /. NAV SIDE  -->
+      <div id="page-wrapper" >
+        <div id="page-inner">
             <div class="row">
-                <div class="col-md-12">
-                    <!-- Advanced Tables -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-PACIENTES                        </div>
-                        <div class="panel-body">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-                                        <tr>
-                                            <th>Nombre</th>
-                                            <th>Apellido</th>
-                                            <th>Alergias</th>
-                                            <th>Responsable</th>
-                                            <th>Documento</th>
-                                            <th>Operacion</th>
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php 
-
-            include("sql/conexion.php");
-            $query = "SELECT id_paciente,alergias, responsable, numero_documento, datos_generales.nombre, datos_generales.apellido, datos_generales.id_datos_generales FROM  paciente INNER JOIN datos_generales ON datos_generales.id_datos_generales = paciente.id_datos_generales";
-            $resultado = $conexion -> query($query);
-            while ($row = $resultado -> fetch_assoc()) {
-
-         ?>                               
-         <tr>
-         <td><?php echo $row['nombre']; ?> </td>
-         <td><?php echo $row['apellido']; ?> </td>
-         <td><?php echo $row['alergias']; ?> </td>
-         <td><?php echo $row['responsable']; ?> </td>
-         <td><?php echo $row['numero_documento']; ?> </td>
-         <th> <a href="modulos/modificar.php?id=<?php echo $row['id_paciente']; ?>"> Modificar</a> |
-         <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
-         | <a href="" data-toggle="modal" data-target="#myModal"> Eliminar</a> 
-         <!-- Button trigger modal -->
-      
-
-        <!-- Modal -->
-        <form action="sql/eliminar_paciente.php" method="post" accept-charset="utf-8">       
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Eliminar paciente</h4>
-              </div>
-              <div class="modal-body">
-                ¿Estás seguro de eliminar esta información?
-                <input type="hidden" name="id_paciente" value="<?php echo $row['id_paciente']; ?>">
-                <input type="hidden" name="id_datos_generales" value="<?php echo $row['id_datos_generales']; ?>">
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Si</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <div class="col-md-12">
+                <h1 class="page-header">
+                  Tabla De Pacientes <small></small>
+                </h1>
               </div>
             </div>
-          </div>
+            <!-- /. ROW  -->              
+            <div class="row">
+              <div class="col-md-12">
+              <!-- Advanced Tables -->
+                <div class="panel panel-default">
+                  <div class="panel-heading">
+                    PACIENTES                        
+                  </div>
+                  <div class="panel-body">
+                    <div class="table-responsive">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                      <thead>
+                        <tr>
+                          <th>Nombre</th>
+                          <th>Apellido</th>
+                          <th>Alergias</th>
+                          <th>Responsable</th>
+                          <th>Documento</th>
+                          <th>Operacion</th>
+                        </tr>
+                      </thead>
+              <tbody>
+              <?php 
+                include("sql/conexion.php");
+                $query = "SELECT id_paciente,alergias, responsable, numero_documento, datos_generales.nombre, datos_generales.apellido, datos_generales.id_datos_generales FROM  paciente INNER JOIN datos_generales ON datos_generales.id_datos_generales = paciente.id_datos_generales";
+                $resultado = $conexion -> query($query);
+                while ($row = $resultado -> fetch_assoc()) {
+              ?>                               
+               <tr>
+                 <td><?php echo $row['nombre']; ?> </td>
+                 <td><?php echo $row['apellido']; ?> </td>
+                 <td><?php echo $row['alergias']; ?> </td>
+                 <td><?php echo $row['responsable']; ?> </td>
+                 <td><?php echo $row['numero_documento']; ?> </td>
+                 <th> <a href="modulos/modificar.php?id=<?php echo $row['id_paciente']; ?>"> Modificar</a> |
+                 <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
+                 | <a href="" data-toggle="modal" data-target="#myModal"> Eliminar</a> 
+                 <!-- Button trigger modal --><!-- Modal -->
+                  <form action="sql/eliminar_paciente.php" method="post" accept-charset="utf-8">       
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                          <h4 class="modal-title" id="myModalLabel">Eliminar paciente</h4>
+                        </div>
+                        <div class="modal-body">
+                          ¿Estás seguro de eliminar esta información?
+                          <input type="hidden" name="id_paciente" value="<?php echo $row['id_paciente']; ?>">
+                          <input type="hidden" name="id_datos_generales" value="<?php echo $row['id_datos_generales']; ?>">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary">Si</button>
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </form>
+                  <!--FIN-->
+              </th>
+              </tr><?php  } ?>                                           
+              </tbody>
+            </div>
+          </table>
         </div>
-        </form>
-        <!--FIN-->
-        </th>
-        </tr>
-        <?php  }    ?>                               
-          </tbody>
-         <!-- Modal -->
-       </div>
-      </table>
-      <!--inicio-->
-      <!-- Trigger the modal with a button -->
-      <!--FINAL-->
+      </div>
+    </div>
   </div>
- </div>
-</div>
-</div>
 </div>
 <!--End Advanced Tables -->
 </div>
@@ -176,14 +171,12 @@ PACIENTES                        </div>
      <!-- DATA TABLE SCRIPTS -->
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#dataTables-example').dataTable();
-            });
-    </script>
-         <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
-    
-   
+      <script>
+        $(document).ready(function () {
+          $('#dataTables-example').dataTable();
+          });
+      </script>
+      <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>  
 </body>
 </html>
