@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -125,7 +123,7 @@ include("../sql/mostrar.php");
                 Modificar contraseña y usuario
               </button>
               <!-- Modal -->
-              <form action="../sql/contrasena.php" method="post" accept-charset="utf-8">
+              <form action="../sql/contrasena.php" id="formu" method="post" accept-charset="utf-8">
               <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -176,14 +174,13 @@ include("../sql/mostrar.php");
         $('#enviar').on('click', function(e){
           e.preventDefault();
 
-          var usuario = $('#usuario').val();
-          var password = $('#password').val();
-          var id_usuario = $('#id_usuario').val();
+          var formu = $('#formu').val();
+
 
           $.ajax({
             type: "POST",
             url: "../sql/contrasena.php",
-            data: ('usuario='+usuario+'&id_usuario'+id_usuario+'&password'+password),
+            data: ('formu='+formu),
 
             success: function(respuesta){
 
@@ -207,4 +204,3 @@ include("../sql/mostrar.php");
    
 </body>
 </html>
->>>>>>> 44e54cae991ba9fb06888dd4773bc6192bedd114

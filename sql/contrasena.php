@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <?php 
 require("conexion.php");
 @session_start();
@@ -26,5 +24,3 @@ if (isset($_SESSION['u_usuario']) && $_SESSION['u_usuario'] == $usuario) {
 		echo "Este usuario ya existe";
 	}	
 }
-?>
->>>>>>> 44e54cae991ba9fb06888dd4773bc6192bedd114

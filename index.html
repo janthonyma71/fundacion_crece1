@@ -10,9 +10,9 @@
 	<div class="container">
 		<h1>Bienvenido</h1>		
 		<form class="form" action="modulos/login.php" method="POST">
-			<input type="text" placeholder="Username" name="username" required>
-			<input type="password" placeholder="Password" name="password" required>
-			<button type="submit" id="login-button" name="submit" value="LOGIN">Login</button>
+			<input type="text" placeholder="Username" name="username" id="user" required>
+			<input type="password" placeholder="Password" name="password" id="pass" required>
+			<button type="submit" id="login" name="submit" value="LOGIN">Login</button>
 		</form>
 	</div>	
 	<ul class="bg-bubbles">
@@ -28,5 +28,38 @@
 		<li></li>
 	</ul>
 	</div>
+
+
+
+	<script>
+	$(document).ready(function() {
+    $('#login').click(function(){
+      var user = $('#user').val();
+      var pass = $('#pass').val();
+      if($.trim(user).length > 0 && $.trim(pass).length > 0){
+        $.ajax({
+            			url: "modulos/login",
+          method:"POST",
+          data:{user:user, pass:pass},
+          cache:"false",
+          beforeSend:function() {
+            $('#login').val("Conectando...");
+          },
+          success:function(data) {
+            $('#login').val("Login");
+            if (data=="1") {
+              $(location).attr('href','index.php');
+            } else {
+              $("#result").html("<div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>&times;</button><strong>¡Error!</strong> las credenciales son incorrectas.</div>");
+            }
+          }
+        });
+      };
+    });
+  });
+            
+
+
+    </script>
   </body>
 </html>
