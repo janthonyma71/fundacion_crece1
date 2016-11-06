@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootstrap Admin html Template : Master</title>
+    <title>Fundacion Crece</title>
     <!-- Bootstrap Styles-->
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
@@ -197,7 +197,7 @@ include("../sql/mostrar.php");
             include("../sql/conexion.php");
         
 
-            $query = "SELECT id_datos_clinicos,peso ,temperatura, altura, presion,fecha_visita,diagnostico_preliminar,id_paciente,prioridad_atencion.prioridad_atencion FROM  datos_clinicos INNER JOIN prioridad_atencion ON prioridad_atencion.id_prioridad_atencion = datos_clinicos.id_prioridad_atencion WHERE id_paciente = $id_paciente";
+            $query = "SELECT id_datos_clinicos,peso ,temperatura, altura, presion, fecha_visita, diagnostico_preliminar,id_paciente,prioridad_atencion.prioridad_atencion FROM  datos_clinicos INNER JOIN prioridad_atencion ON prioridad_atencion.id_prioridad_atencion = datos_clinicos.id_prioridad_atencion WHERE id_paciente = $id_paciente";
             $resultado = $conexion -> query($query);
 
             while ($row = $resultado -> fetch_assoc()) {
@@ -214,22 +214,44 @@ include("../sql/mostrar.php");
          <td><?php echo $row['diagnostico_preliminar']; ?> </td>
 
          <th> <a href="modifcar_datos_clinicos.php?id=<?php echo $row['id_paciente']; ?>&id1=<?php echo $row['id_datos_clinicos']; ?>"> Modificar</a> 
-          | <a href="modulos/eliminar.php?id=<?php echo $row['id_paciente']; ?>"> Eliminar</a> 
-             </th>
-    
-         </tr>
-         <?php 
-}
-         ?>
-                                       
+          | <a href="" data-toggle="modal" data-target="#myModal"> Eliminar</a> 
+         <!-- Button trigger modal -->
+      
 
-                            </tbody>
-                                </table>
-                            </div>
-                            </div>
-                    </div>
-                    <!--End Advanced Tables -->
-                </div>
+        <!-- Modal -->
+        <form action="../sql/eliminar_dato_clinico.php" method="post" accept-charset="utf-8">       
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Eliminar diagnostico</h4>
+              </div>
+              <div class="modal-body">
+                ¿Estás seguro de eliminar esta información?
+                <input type="hidden" name="id_paciente" value="<?php echo $row['id_paciente']; ?>">
+                <input type="hidden" name="id_datos_clinicos" value="<?php echo $row['id_datos_clinicos']; ?>">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Si</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </form>
+      </th>    
+      </tr>
+      <?php } ?>
+           </tbody>
+         </table>
+        </div>
+        </div>
+        </div>
+        <!--End Advanced Tables -->
+         </div>
             </div>
                 <!-- /. ROW  -->
             
