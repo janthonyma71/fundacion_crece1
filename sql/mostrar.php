@@ -10,7 +10,7 @@ $query = "SELECT id_usuario,datos_generales.id_datos_generales,datos_generales.n
    while( $row = $resultado -> fetch_assoc()){
    $nombre = $row['nombre'];
    $apellido = $row['apellido'];
-          $passwordd =$row['password'];
+          $password =$row['password'];
 
    $usuario2 = $row['usuario'];
 

@@ -128,7 +128,7 @@ include("../sql/mostrar.php");
                                         </div>
 
 
-                                           <input type="hidden" name="id_usuario" value="<?php echo $id_usuario;?>"> <input type="hidden" name="id_datos_generales" value="<?php echo $id_datos_generales;?>">
+                                            <input type="hidden" name="id_datos_generales" value="<?php echo $id_datos_generales;?>">
                                          
                                        
                                         <div class="col-md-12">
@@ -146,7 +146,7 @@ include("../sql/mostrar.php");
                                        <button type="submit" class="btn btn-primary col-md-6" data-toggle="modal" data-target="#myModal"> CAMBIAR USUARIO O CONTRASEÑA </button>
                                         <br>
  <!-- Modal -->
-        <form action="../sql/modificar_contraseña.php" method="post" accept-charset="utf-8">       
+        <form action="../sql/contrasena.php" method="post" accept-charset="utf-8">       
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -157,15 +157,24 @@ include("../sql/mostrar.php");
                 <h4 class="modal-title" id="myModalLabel">Eliminar paciente</h4>
               </div>
               <div class="modal-body">
-<div class="col-md-7">
-                                               <label>Usuario:</label>
-                                            <input class="form-control" name="usuario" required="Nombre" value="<?php echo $usuario2;  ?>">
-                                        </div>                <input type="hidden" name="id_paciente" value="<?php echo $row['id_paciente']; ?>">
-                <input type="hidden" name="id_datos_generales" value="<?php echo $row['id_datos_generales']; ?>">
-              </div>
+               <div class="col-md-7">
+                 <label>Usuario:</label>
+               <input class="form-control" name="usuario" required="Nombre" value="<?php echo $usuario2;  ?>">
+                                        </div>               
+               <div class="col-md-7">
+
+             <label>Contraseña:</label>
+               <input type="password" class="form-control" name="password" required="Nombre" value="<?php echo $password;  ?>">
+                                        </div>                
+
+              <input type="hidden" name="id_usuario" value="<?php echo $id_usuario;?>">
               <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Si</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                             <div class="col-md-7">
+<br>
+                <button type="submit" class="btn btn-primary">Cambiar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                        </div>                
+
               </div>
             </div>
           </div>
