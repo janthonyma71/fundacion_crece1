@@ -135,7 +135,7 @@ include("../sql/mostrar.php");
                     </div>
                     <div class="modal-body">
                       <input type="text" name="usuario" value="<?php echo $usuario2;  ?>" placeholder="">
-                      <input type="text" name="password"  value="<?php echo $password;  ?>" placeholder="">
+                      <input type="text" name="password"  value="<?php echo $password1;  ?>" placeholder="">
                       <input type="text" name="id_usuario"  placeholder="" value="<?php echo $id_usuario;?>">
                     </div>
                     <div class="modal-footer">
@@ -165,6 +165,7 @@ include("../sql/mostrar.php");
      <!-- DATA TABLE SCRIPTS -->
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
+<<<<<<< HEAD
         <script>
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
@@ -202,5 +203,11 @@ include("../sql/mostrar.php");
      
     </script>
    
+=======
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>    
+    <script type="text/javascript">     
+    </script>   
+>>>>>>> 25a3370a3f5a90d82ca9c73350367f0c254022d5
 </body>
 </html>
