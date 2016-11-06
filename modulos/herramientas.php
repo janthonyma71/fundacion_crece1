@@ -154,24 +154,24 @@ include("../sql/mostrar.php");
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">Eliminar paciente</h4>
+                <h4 class="modal-title" id="myModalLabel">Modificar contraseña o usuario</h4>
               </div>
               <div class="modal-body">
                <div class="col-md-7">
                  <label>Usuario:</label>
-               <input class="form-control" name="usuario" required="Nombre" value="<?php echo $usuario2;  ?>">
+               <input class="form-control" name="usuario" id="usuario" required="Nombre" value="<?php echo $usuario2;  ?>">
                                         </div>               
                <div class="col-md-7">
 
              <label>Contraseña:</label>
-               <input type="password" class="form-control" name="password" required="Nombre" value="<?php echo $password;  ?>">
+               <input type="password" class="form-control" name="password" id="password" required="Nombre" value="<?php echo $password;  ?>">
                                         </div>                
 
-              <input type="hidden" name="id_usuario" value="<?php echo $id_usuario;?>">
+              <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $id_usuario;?>">
               <div class="modal-footer">
                              <div class="col-md-7">
 <br>
-                <button type="submit" class="btn btn-primary">Cambiar</button>
+                <button type="submit" class="btn btn-primary" id="enviar">Cambiar</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                                                         </div>                
 
@@ -210,10 +210,39 @@ include("../sql/mostrar.php");
             $(document).ready(function () {
                 $('#dataTables-example').dataTable();
             });
+
+             $(function(){
+        $('#enviar').on('click', function(e){
+          e.preventDefault();
+
+          var usuario = $('#usuario').val();
+          var password = $('#password').val();
+          var id_usuario = $('#id_usuario').val();
+
+          $.ajax({
+            type: "POST",
+            url: "../sql/contrasena.php",
+            data: ('usuario='+usuario+'&id_usuario'+id_usuario+'&password'+password),
+
+            success: function(respuesta){
+
+              alert(respuesta);
+            }
+
+          })          
+        })
+
+      })
+
+
+
     </script>
          <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
     
+    <script type="text/javascript">
+     
+    </script>
    
 </body>
 </html>
