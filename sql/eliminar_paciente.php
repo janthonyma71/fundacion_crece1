@@ -11,6 +11,7 @@ $resultado = $conexion -> query($sql);
 $sql1="DELETE FROM datos_generales WHERE id_datos_generales = $id_datos_generales";
 $resultado1 = $conexion -> query($sql1);
 
+
 header("location: ../historial_medico.php");
 
 ?>

@@ -105,6 +105,12 @@ include("../sql/mostrar.php");
 
             include("../sql/conexion.php");
 
+            $query1 =" SELECT * from datos_clinicos";
+            
+            $id_datos_clinicos = $row['id_datos_clinicos'];
+
+            $resultado = $conexion -> query($query)1;
+
             $query = "SELECT id_paciente,alergias, responsable, numero_documento,documento, datos_generales.id_datos_generales,datos_generales.nombre, datos_generales.apellido, datos_generales.genero, datos_generales.fecha_nacimiento FROM  paciente INNER JOIN datos_generales ON datos_generales.id_datos_generales = paciente.id_datos_generales WHERE id_paciente ='" . $_GET['id'] . "'";
            
 
