@@ -27,9 +27,9 @@ include("sql/mostrar.php");
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar">df</span>
-                    <span class="icon-bar">dfs</span>
-                    <span class="icon-bar">fds</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="home.php"><i class="fa fa-gear"></i> <strong>CRECE</strong></a>
             </div>
@@ -45,7 +45,7 @@ include("sql/mostrar.php");
                      <ul class="dropdown-menu dropdown-user">
                         <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil  (<?php echo $nombre.' '.$apellido;?> )</a>
                         </li>
-                        <li><a href="#"><i class="fa fa-gear fa-fw"></i>Herramientas</a>
+                        <li><a href="modulos/herramientas.php"><i class="fa fa-gear fa-fw"></i>Herramientas</a>
                         </li>
                         <li class="divider"></li>
                         <li><a href="modulos/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesion</a>
@@ -125,12 +125,11 @@ PACIENTES                        </div>
          <td><?php echo $row['alergias']; ?> </td>
          <td><?php echo $row['responsable']; ?> </td>
          <td><?php echo $row['numero_documento']; ?> </td>
-         <th> <a href="modulos/modificar.php?id=<?php echo $row['id_paciente']; ?>"> Modificar</a> 
+         <th> <a href="modulos/modificar.php?id=<?php echo $row['id_paciente']; ?>"> Modificar</a> |
+         <a data-toggle="modal" data-target="#myModal"> Eliminar</a> 
         | <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
         | <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal">
-          Eliminar
-        </button>
+      
 
         <!-- Modal -->
         <form action="sql/eliminar_paciente.php" method="post" accept-charset="utf-8">       

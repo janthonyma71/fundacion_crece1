@@ -29,6 +29,9 @@ $password= md5($contra);
 	$sql="INSERT INTO usuario (id_rol,id_datos_generales,estado,password,usuario) VALUES ('$rol','$id_datos_generales','1','$password','$usuario')";
 	$resultado = $conexion -> query($sql);
 
+           
+
+
             header("location: ../home.php");
 
 

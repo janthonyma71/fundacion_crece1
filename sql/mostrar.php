@@ -1,15 +1,24 @@
 <?php 
-        session_start();
+       @session_start();
         if (isset($_SESSION['u_usuario'] )) {
 
 $comp=$_SESSION['u_usuario'];
 require("conexion.php");
-$query = "SELECT datos_generales.nombre, datos_generales.apellido, usuario FROM usuario INNER JOIN datos_generales ON usuario.id_datos_generales = datos_generales.id_datos_generales  WHERE usuario='$comp'";
+$query = "SELECT datos_generales.nombre, datos_generales.apellido, usuario,password, datos_generales.fecha_nacimiento, datos_generales.genero FROM usuario INNER JOIN datos_generales ON usuario.id_datos_generales = datos_generales.id_datos_generales  WHERE usuario='$comp'";
             $resultado = $conexion -> query($query);
 
    while( $row = $resultado -> fetch_assoc()){
    $nombre = $row['nombre'];
    $apellido = $row['apellido'];
+          $passwordd =$row['password'];
+
+   $usuario2 = $row['usuario'];
+
+   $fecha_nacimiento2 = $row['fecha_nacimiento'];
+
+   $genero2 = $row['genero'];
+
+
 }
 
 

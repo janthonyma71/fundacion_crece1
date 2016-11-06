@@ -18,8 +18,10 @@
     <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-
-
+<?php 
+                    @session_start();
+include("../sql/mostrar.php");
+ ?>
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
@@ -35,7 +37,7 @@
             <ul class="nav navbar-top-links navbar-right">
       
                
-                <!-- /.dropdown -->
+              <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -46,7 +48,7 @@
                         <li><a href="modulos/herramientas.php"><i class="fa fa-gear fa-fw"></i>Herramientas</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="../modulos/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesion</a>
+                        <li><a href="modulos/cerrar_sesion.php"><i class="fa fa-sign-out fa-fw"></i>Cerrar Sesion</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -82,7 +84,7 @@
              <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            Modificar Pacientes <small>                               <a href="../historial_medico.php" ><button class="btn btn-default"> Regresar a la tabla</button> </a>
+                            MODIFICAR PERFIL      <small>                               <a href="../home.php" ><button class="btn btn-default"> Regresar al inicio</button> </a>
 </small>
                         </h1>
                     </div>
@@ -98,87 +100,89 @@
                             <div class="table-responsive">
                                 
 
-                                    <?php 
-                    @session_start();
-
-            include("../sql/conexion.php");
-
-            $query = "SELECT id_paciente,alergias, responsable, numero_documento,documento, datos_generales.id_datos_generales,datos_generales.nombre, datos_generales.apellido, datos_generales.genero, datos_generales.fecha_nacimiento FROM  paciente INNER JOIN datos_generales ON datos_generales.id_datos_generales = paciente.id_datos_generales WHERE id_paciente ='" . $_GET['id'] . "'";
-           
-
-
-            $resultado = $conexion -> query($query);
-
-            $row = $resultado -> fetch_assoc();
-
-            $id_datos_generales = $row['id_datos_generales'];
-            $id_paciente = $row['id_paciente'];
-
-         ?>
-                               
+                                                   
 
                                        
-  <form role="form" action="../sql/modificar.php" method="post">
+                                    <form role="form" action="../sql/modificar_perfil.php" method="post">
                                         
-                                        <div class="form-group">
+                                        <div class="col-md-3">
+                                               <label>Usuario:</label>
+                                            <input class="form-control" name="peso" required="Nombre" value="<?php echo $usuario2;  ?>">
+                                        </div>
+
+                                        <div class="col-md-3">
                                                <label>Nombre:</label>
-                                            <input class="form-control" name="nombre" required="Nombre" value="<?php echo $row['nombre'];  ?>">
-                                        </div>
-
-                                        <div class="form-group">
+                                            <input class="form-control" name="temperatura" required="Apellido" value="<?php echo $nombre;  ?>">
+                                       </div>
+                                        <div class="col-md-3">
                                                <label>Apellido:</label>
-                                            <input class="form-control" name="apellido" required="Apellido" value="<?php echo $row['apellido'];  ?>">
+                                            <input class="form-control" name="altura" value="<?php echo $apellido;  ?>">
+                                        </div>
+                                        <div class="col-md-3">
+                                               <label>Genero:</label>
+                                            <input class="form-control" name="presion" value="<?php echo $genero2;  ?>">
+                                        </div>
+                                        <div class="col-md-4">
+                                        <br>
+                                             <label>Fecha:</label>
+                                            <input type="date" class="form-control" name="fecha" value="<?php echo $fecha_nacimiento2;  ?>">
+                                        </div>
+ 
+                                         <div class="col-md-4">
+                                        <br>
+
                                         </div>
 
-                                        <div class="form-group">                                      
-                                             <label>Genero:</label>
-                                            <select class="form-control" name ="genero" value="<?php echo $row['genero'];  ?>" >
-                                                <option>Femenino</option>
-                                                <option>Masculino</option>
-                                            </select>                                                       
+
+                                                                        
+                                         
+                                       
+                                        <div class="col-md-12">
+                                        <br>
+                                         <button class="col-md-2"> Guardar  </button> 
+                                           <br>
+                                        <br>
+
                                         </div>
-
-                                        <div class="form-group">
-                                             <label>Fecha de Nacimiento:</label>
-                                            <input type="date" class="form-control" name="fecha" value="<?php echo $row['fecha_nacimiento'];  ?>">
+                                    <br>
+                                    <br>
                                         </div>
-       
-                                        <div class="form-group">
-                                      
-                                             <label>Documento:</label>
-                                            <select class="form-control" name ="documento" value="<?php echo $row['documento'];  ?>">
-                                                <option>DUI</option>
-                                                <option>NIT</option>
-                                            </select>                                  
-                                        </div>
-
-                                        <div class="form-group">
-                                               <label>Numero de documento:</label>
-                                            <input class="form-control" name="numero_documento" value="<?php echo $row['numero_documento'];  ?>">
-                                        </div>
-
-                                        <div class="form-group">
-                                               <label>Alergias:</label>
-                                            <input class="form-control" name="alergias" value="<?php echo $row['alergias'];  ?>">
-                                        </div>
-
-                                        
-                                        <input type="hidden" value="<?php echo $id_datos_generales; ?>" name="id_datos_generales" >
-
-                                        <input type="hidden" value="<?php echo $id_paciente; ?>" name="id_paciente" >
-                                        
-
-
-                                        <div class="form-group">
-                                          <label>Responsable:</label>
-                                            <input class="form-control" name="responsable" value="<?php echo $row['responsable']; ?>">
-                                        </div>     
-
-                                         <button> Modificar  </button> 
-                                      
                                     </form>
+                                      <div class="col-md-12">
+                                       <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> CAMBIAR CONTRASEÑA </button>
+                                        <br>
+ <!-- Modal -->
+        <form action="../sql/eliminar_paciente.php" method="post" accept-charset="utf-8">       
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Eliminar paciente</h4>
+              </div>
+              <div class="modal-body">
+                ¿Estás seguro de eliminar esta información?
+                <input type="hidden" name="id_paciente" value="<?php echo $row['id_paciente']; ?>">
+                <input type="hidden" name="id_datos_generales" value="<?php echo $row['id_datos_generales']; ?>">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Si</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        </form>
+        <!--FIN-->
+                                        </div>
+                                                                                                              
+
+
                             </div>
-                        </div>
+                            </div>
+
                     </div>
                     <!--End Advanced Tables -->
                 </div>
