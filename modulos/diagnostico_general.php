@@ -152,11 +152,17 @@ include("../sql/mostrar.php");
                                         </div>
                                         <div class="col-md-4">
                                         <br>
-                                             <label>Prioridad Atencion:</label>
-                                            <select class="form-control" name ="prioridad" >
-                                                <option>Emergencia</option>
-                                                <option>Consulta</option>
-                                            </select>
+                                        <label>Prioridad Atencion:</label>
+                                        <select class="form-control" name ="prioridad" >
+                                                 <?php
+                                                include('sql/conexion.php');
+                                                $sql = "SELECT id_prioridad_atencion, prioridad_atencion FROM prioridad_atencion";
+                                                $resultado = $conexion -> query($sql);
+                                                while( $row = $resultado -> fetch_assoc()){                 
+                                                ?>                                          
+                                          <option value="<?php echo $row['prioridad_atencion'];?>"><?php echo $row['prioridad_atencion'];?></option>                      
+                                          <?php } ?>
+                                        </select>
                                         </div>
                                                                         
                                         <div class="col-md-4">

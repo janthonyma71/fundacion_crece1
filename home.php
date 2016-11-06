@@ -81,6 +81,7 @@ include("sql/mostrar.php");
         <div id="page-wrapper">
             <div id="page-inner">
 
+
 				
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
@@ -105,18 +106,24 @@ include("sql/mostrar.php");
                                             </select>                                                                                    </div>
 
                                         <div class="form-group">
-
-                                             <label>Fecha de Nacimiento:</label>
-                                            <input type="date" class="form-control" name="fecha">
-                                                                             </div>
+                                    <label>Fecha de Nacimiento:</label>
+                                     <input type="date" class="form-control" name="fecha">
+                                   </div>
        
-          <div class="form-group">
-                                      
-                                             <label>Rol:</label>
-                                            <select class="form-control" name ="rol">
-                                                <option>Administrador</option>
-                                                <option>Usuario</option>
-                                            </select>                                                                                    </div>
+                                     <div class="form-group">
+                                     <label>Rol:</label>
+                                     <select class="form-control" name ="rol">
+                                        <?php
+                                        include('sql/conexion.php');
+                                        $sql = "SELECT id_rol, rol FROM roles";
+                                        $resultado = $conexion -> query($sql);
+                                        while( $row = $resultado -> fetch_assoc()){
+                                            
+                                        ?>                                          
+                                        <option value="<?php echo $row['rol'];?>"><?php echo $row['rol'];?></option>                                           
+                                        <?php } ?>
+                                        </select>                                                          
+                                        </div>
                                         <div class="form-group">
 
                                                <label>Nombre:</label>
