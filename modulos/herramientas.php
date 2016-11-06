@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootstrap Admin html Template : Master</title>
+    <title>Fundacion Crece</title>
     <!-- Bootstrap Styles-->
     <link href="../assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->

@@ -3,7 +3,7 @@
 <head>
       <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bootstrap Admin html Template : Master</title>
+    <title>Fundacion Crece</title>
     <!-- Bootstrap Styles-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FontAwesome Styles-->
@@ -126,9 +126,9 @@ PACIENTES                        </div>
          <td><?php echo $row['responsable']; ?> </td>
          <td><?php echo $row['numero_documento']; ?> </td>
          <th> <a href="modulos/modificar.php?id=<?php echo $row['id_paciente']; ?>"> Modificar</a> |
-         <a href="" data-toggle="modal" data-target="#myModal"> Eliminar</a> 
-        | <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
-        | <!-- Button trigger modal -->
+         <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
+         | <a href="" data-toggle="modal" data-target="#myModal"> Eliminar</a> 
+         <!-- Button trigger modal -->
       
 
         <!-- Modal -->
