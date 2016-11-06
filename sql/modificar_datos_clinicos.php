@@ -18,7 +18,7 @@ $id_datos_clinicos = $_POST['id_datos_clinicos'];
 
 
 
-	$sql= "UPDATE   datos_clinicos SET peso = '$peso' ,temperatura='$temperatura' ,altura='$altura' ,presion='$presion' ,fecha_visita='$fecha' ,diagnostico_preliminar='$diagnostico_preliminar'WHERE id_paciente='$id_paciente'AND id_datos_clinicos= '$id_datos_clinicos'";
+	$sql= "UPDATE   datos_clinicos SET peso = '$peso' ,temperatura='$temperatura' ,altura='$altura' ,presion='$presion' ,fecha_visita='$fecha' ,diagnostico_preliminar='$diagnostico_preliminar', id_prioridad_atencion='$prioridad' WHERE id_paciente='$id_paciente'AND id_datos_clinicos= '$id_datos_clinicos'";
 
 	$resultado = $conexion -> query($sql);
 
