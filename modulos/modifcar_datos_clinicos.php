@@ -18,6 +18,8 @@
     <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
+<?php include("../sql/mostrar.php");
+  ?>
 
 
     <div id="wrapper">

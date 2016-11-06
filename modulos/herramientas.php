@@ -94,8 +94,8 @@ include("../sql/mostrar.php");
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading"> PACIENTES </div>
+                    <div class="panel panel-default  col-md-8">
+                        <div class="panel-heading  col-md-3"> PACIENTES </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 
@@ -105,30 +105,30 @@ include("../sql/mostrar.php");
                                        
                                     <form role="form" action="../sql/modificar_perfil.php" method="post">
                                         
-                                        <div class="col-md-3">
+                                        <div class="col-md-7">
                                                <label>Usuario:</label>
                                             <input class="form-control" name="peso" required="Nombre" value="<?php echo $usuario2;  ?>">
                                         </div>
 
-                                        <div class="col-md-3">
+                                        <div class="col-md-7">
                                                <label>Nombre:</label>
                                             <input class="form-control" name="temperatura" required="Apellido" value="<?php echo $nombre;  ?>">
                                        </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-7">
                                                <label>Apellido:</label>
                                             <input class="form-control" name="altura" value="<?php echo $apellido;  ?>">
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-7">
                                                <label>Genero:</label>
                                             <input class="form-control" name="presion" value="<?php echo $genero2;  ?>">
                                         </div>
-                                        <div class="col-md-4">
+                                        <div class="col-md-7">
                                         <br>
                                              <label>Fecha:</label>
                                             <input type="date" class="form-control" name="fecha" value="<?php echo $fecha_nacimiento2;  ?>">
                                         </div>
  
-                                         <div class="col-md-4">
+                                         <div class="col-md-7">
                                         <br>
 
                                         </div>
@@ -139,7 +139,7 @@ include("../sql/mostrar.php");
                                        
                                         <div class="col-md-12">
                                         <br>
-                                         <button class="col-md-2"> Guardar  </button> 
+                                         <button class="col-md-6"> Guardar  </button> 
                                            <br>
                                         <br>
 
@@ -149,10 +149,10 @@ include("../sql/mostrar.php");
                                         </div>
                                     </form>
                                       <div class="col-md-12">
-                                       <button type="submit" class="btn btn-primary" data-toggle="modal" data-target="#myModal"> CAMBIAR CONTRASEÑA </button>
+                                       <button type="submit" class="btn btn-primary col-md-6" data-toggle="modal" data-target="#myModal"> CAMBIAR CONTRASEÑA </button>
                                         <br>
  <!-- Modal -->
-        <form action="../sql/eliminar_paciente.php" method="post" accept-charset="utf-8">       
+        <form action="../sql/modificar_contraseña.php" method="post" accept-charset="utf-8">       
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">

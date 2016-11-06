@@ -126,7 +126,7 @@ PACIENTES                        </div>
          <td><?php echo $row['responsable']; ?> </td>
          <td><?php echo $row['numero_documento']; ?> </td>
          <th> <a href="modulos/modificar.php?id=<?php echo $row['id_paciente']; ?>"> Modificar</a> |
-         <a data-toggle="modal" data-target="#myModal"> Eliminar</a> 
+         <a href="" data-toggle="modal" data-target="#myModal"> Eliminar</a> 
         | <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
         | <!-- Button trigger modal -->
       
