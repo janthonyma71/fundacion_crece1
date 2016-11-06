@@ -19,9 +19,9 @@
 </head>
 <body>
 <?php 
-                    @session_start();
+@session_start();
 include("../sql/mostrar.php");
- ?>
+?>
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
@@ -33,10 +33,7 @@ include("../sql/mostrar.php");
                 </button>
                 <a class="navbar-brand" href="home.php"><i class="fa fa-gear"></i> <strong>CRECE</strong></a>
             </div>
-
-            <ul class="nav navbar-top-links navbar-right">
-      
-               
+            <ul class="nav navbar-top-links navbar-right">      
               <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
@@ -60,7 +57,6 @@ include("../sql/mostrar.php");
         <nav class="navbar-default navbar-side" role="navigation">
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-
                   <li>
                         <a  href="../home.php"><i class="fa fa-edit"></i> Agregar usuario</a>
                     </li>
@@ -71,12 +67,9 @@ include("../sql/mostrar.php");
                         <a class="active-menu" href="../historial_medico.php"><i class="fa fa-bar-chart-o"></i> Historial Medico</a>
                     </li>
                         </ul>
-                    </li>
-                 
+                    </li>                 
                 </ul>
-
             </div>
-
         </nav>
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper" >
@@ -84,118 +77,84 @@ include("../sql/mostrar.php");
              <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            MODIFICAR PERFIL      <small>                               <a href="../home.php" ><button class="btn btn-default"> Regresar al inicio</button> </a>
-</small>
+                            MODIFICAR PERFIL<small><a href="../home.php" ><button class="btn btn-default"> Regresar al inicio</button> </a>
+                          </small>
                         </h1>
                     </div>
                 </div> 
-                 <!-- /. ROW  -->
-               
+            <!-- /. ROW  -->              
             <div class="row">
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-default  col-md-8">
-                        <div class="panel-heading  col-md-3"> PACIENTES </div>
+                      <div class="panel-heading  col-md-3"> Usuario </div>
                         <div class="panel-body">
                             <div class="table-responsive">
-                                
-
-                                                   
-
-                                       
-                                    <form role="form" action="../sql/modificar_perfil.php" method="post">
-                                        
-                                        
-
-                                        <div class="col-md-7">
-                                               <label>Nombre:</label>
-                                            <input class="form-control" name="nombre" required="Apellido" value="<?php echo $nombre;  ?>">
-                                       </div>
-                                        <div class="col-md-7">
-                                               <label>Apellido:</label>
-                                            <input class="form-control" name="apellido" value="<?php echo $apellido;  ?>">
-                                        </div>
-                                       
-                                        <div class="col-md-7">
-                                        <br>
-                                             <label>Fecha:</label>
-                                            <input type="date" class="form-control" name="fecha" value="<?php echo $fecha_nacimiento2;  ?>">
-                                        </div>
- 
-                                         <div class="col-md-7">
-                                        <br>
-
-                                        </div>
-
-
-                                            <input type="hidden" name="id_datos_generales" value="<?php echo $id_datos_generales;?>">
-                                         
-                                       
-                                        <div class="col-md-12">
-                                        <br>
-                                         <button class="col-md-6"> Guardar  </button> 
-                                           <br>
-                                        <br>
-
-                                        </div>
-                                    <br>
-                                    <br>
-                                        </div>
-                                    </form>
-                                      <div class="col-md-12">
-                                       <button type="submit" class="btn btn-primary col-md-6" data-toggle="modal" data-target="#myModal"> CAMBIAR USUARIO O CONTRASEÑA </button>
-                                        <br>
- <!-- Modal -->
-        <form action="../sql/contrasena.php" method="post" accept-charset="utf-8">       
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">Modificar contraseña o usuario</h4>
+                      <form role="form" action="../sql/modificar_perfil.php" method="post">
+                        <div class="col-md-7">
+                          <label>Nombre:</label>
+                          <input class="form-control" name="nombre" required="Apellido" value="<?php echo $nombre;  ?>">
+                        </div>
+                        <div class="col-md-7">
+                        <br>
+                          <label>Apellido:</label>
+                          <input class="form-control" name="apellido" value="<?php echo $apellido;  ?>">
+                         </div>
+                        <div class="col-md-7">
+                          <br>
+                          <label>Fecha:</label>
+                            <input type="date" class="form-control" name="fecha" value="<?php echo $fecha_nacimiento2;  ?>">
+                        </div>
+                        <div class="col-md-7">
+                          <br>
+                        </div>
+                        <input type="hidden" name="id_datos_generales" value="<?php echo $id_datos_generales;?>">
+                        <div class="col-md-12">
+                          <button class="col-md-6"> Guardar</button> 
+                          <br>
+                          <br>
+                        </div>
+                          <br><br>
+                          </form>
+                        </div>
+            <!--INICIO-->
+            <!-- Button trigger modal -->
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#myModal">
+                Modificar contraseña y usuario
+              </button>
+              <!-- Modal -->
+              <form action="../sql/contrasena.php" method="post" accept-charset="utf-8">
+              <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                      <input type="text" name="usuario" value="<?php echo $usuario2;  ?>" placeholder="">
+                      <input type="text" name="password"  value="<?php echo $password;  ?>" placeholder="">
+                      <input type="text" name="id_usuario"  placeholder="" value="<?php echo $id_usuario;?>">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="submit" class="btn btn-primary">Modificar</button>
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div class="modal-body">
-               <div class="col-md-7">
-                 <label>Usuario:</label>
-               <input class="form-control" name="usuario" id="usuario" required="Nombre" value="<?php echo $usuario2;  ?>">
-                                        </div>               
-               <div class="col-md-7">
-
-             <label>Contraseña:</label>
-               <input type="password" class="form-control" name="password" id="password" required="Nombre" value="<?php echo $password;  ?>">
-                                        </div>                
-
-              <input type="hidden" name="id_usuario" id="id_usuario" value="<?php echo $id_usuario;?>">
-              <div class="modal-footer">
-                             <div class="col-md-7">
-<br>
-                <button type="submit" class="btn btn-primary" id="enviar">Cambiar</button>
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        </div>                
-
-              </div>
-            </div>
+            </form>
+            <!--FIN-->
           </div>
         </div>
-        </form>
-        <!--FIN-->
-                                        </div>
-                                                                                                              
-
-
-                            </div>
-                            </div>
-
-                    </div>
-                    <!--End Advanced Tables -->
-                </div>
-            </div>
-                <!-- /. ROW  -->
-            
-         <!-- /. PAGE WRAPPER  -->
-     <!-- /. WRAPPER  -->
+       </div><!--End Advanced Tables -->
+      </div>
+    </div>
+    <!-- /. ROW  -->
+    <!-- /. PAGE WRAPPER  -->
+    <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     <script src="assets/js/jquery-1.10.2.js"></script>
