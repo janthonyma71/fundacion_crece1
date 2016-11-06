@@ -114,52 +114,71 @@ PACIENTES                        </div>
                                     <?php 
 
             include("sql/conexion.php");
-            $query = "SELECT id_paciente,alergias, responsable, numero_documento, datos_generales.nombre, datos_generales.apellido FROM  paciente INNER JOIN datos_generales ON datos_generales.id_datos_generales = paciente.id_datos_generales";
+            $query = "SELECT id_paciente,alergias, responsable, numero_documento, datos_generales.nombre, datos_generales.apellido, datos_generales.id_datos_generales FROM  paciente INNER JOIN datos_generales ON datos_generales.id_datos_generales = paciente.id_datos_generales";
             $resultado = $conexion -> query($query);
             while ($row = $resultado -> fetch_assoc()) {
 
-         ?>
-                               
-          <tr>
+         ?>                               
+         <tr>
          <td><?php echo $row['nombre']; ?> </td>
          <td><?php echo $row['apellido']; ?> </td>
          <td><?php echo $row['alergias']; ?> </td>
          <td><?php echo $row['responsable']; ?> </td>
          <td><?php echo $row['numero_documento']; ?> </td>
          <th> <a href="modulos/modificar.php?id=<?php echo $row['id_paciente']; ?>"> Modificar</a> 
-          | <a href="modulos/eliminar.php?id=<?php echo $row['id_paciente']; ?>"  > Eliminar</a> 
-                    | <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente']; ?>"> Añadir Datos Clinicos</a> </th>
-    
-         </tr>
+        | <a href="sql/eliminar_paciente.php?id_paciente=<?php echo $row['id_paciente']; ?>&id_datos_generales=<?php echo $row['id_datos_generales']; ?>"> Eliminar</a> 
+        | <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
+        | <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          Eliminar
+        </button>
 
-         
-         <?php 
-}
-         ?>
-                                       
-
-                            </tbody>
-                             <!-- Modal -->
-
-  
-</div>
-                                </table>
-
-  </div>
-                            </div>
-             
-  </div>
-  
-                        </div>
-                    </div>
-                    <!--End Advanced Tables -->
-
-                </div>
+        <!-- Modal -->
+        <form action="sql/eliminar_paciente.php" method="post" accept-charset="utf-8">       
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">Eliminar paciente</h4>
+              </div>
+              <div class="modal-body">
+                ¿Estás seguro de eliminar esta información?
+                <input type="hidden" name="id_paciente" value="<?php echo $row['id_paciente']; ?>">
+                <input type="hidden" name="id_datos_generales" value="<?php echo $row['id_datos_generales']; ?>">
+              </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Si</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              </div>
             </div>
-                <!-- /. ROW  -->
-            
-         <!-- /. PAGE WRAPPER  -->
-     <!-- /. WRAPPER  -->
+          </div>
+        </div>
+        </form>
+        <!--FIN-->
+        </th>
+        </tr>
+        <?php  }    ?>                               
+          </tbody>
+         <!-- Modal -->
+       </div>
+      </table>
+      <!--inicio-->
+      <!-- Trigger the modal with a button -->
+      <!--FINAL-->
+  </div>
+ </div>
+</div>
+</div>
+</div>
+<!--End Advanced Tables -->
+</div>
+</div>
+<!-- /. ROW  -->
+    <!-- /. PAGE WRAPPER  -->
+    <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
     <!-- jQuery Js -->
     <script src="assets/js/jquery-1.10.2.js"></script>
