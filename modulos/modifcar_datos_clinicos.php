@@ -19,9 +19,7 @@
 </head>
 <body>
 
-<?php 
-include("../sql/mostrar.php");
- ?>
+
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
@@ -84,7 +82,7 @@ include("../sql/mostrar.php");
              <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            Diagnostico General <small>                               <a href="../historial_medico.php" ><button class="btn btn-default"> Regresar a la tabla</button> </a>
+                            Modificar Pacientes <small>                               <a href="../historial_medico.php" ><button class="btn btn-default"> Regresar a la tabla</button> </a>
 </small>
                         </h1>
                     </div>
@@ -95,7 +93,7 @@ include("../sql/mostrar.php");
                 <div class="col-md-12">
                     <!-- Advanced Tables -->
                     <div class="panel panel-default">
-                        <div class="panel-heading"> PACIENTES </div>
+                        <div class="panel-heading"> DATOS CLINICOS </div>
                         <div class="panel-body">
                             <div class="table-responsive">
                                 
@@ -105,44 +103,44 @@ include("../sql/mostrar.php");
 
             include("../sql/conexion.php");
 
-            $query = "SELECT id_paciente,alergias, responsable, numero_documento,documento, datos_generales.id_datos_generales,datos_generales.nombre, datos_generales.apellido, datos_generales.genero, datos_generales.fecha_nacimiento FROM  paciente INNER JOIN datos_generales ON datos_generales.id_datos_generales = paciente.id_datos_generales WHERE id_paciente ='" . $_GET['id'] . "'";
-           
-
+                $query = "SELECT id_datos_clinicos,peso ,temperatura, altura, presion,fecha_visita,diagnostico_preliminar,id_paciente,prioridad_atencion.prioridad_atencion FROM  datos_clinicos INNER JOIN prioridad_atencion ON prioridad_atencion.id_prioridad_atencion = datos_clinicos.id_prioridad_atencion WHERE  id_paciente = '" . $_GET['id'] . "'  AND id_datos_clinicos='" . $_GET['id1'] . "'";
+     
 
             $resultado = $conexion -> query($query);
 
             $row = $resultado -> fetch_assoc();
 
-            $id_datos_generales = $row['id_datos_generales'];
             $id_paciente = $row['id_paciente'];
+                        $id_datos_clinicos = $row['id_datos_clinicos'];
+
 
          ?>
                                
 
                                        
-  <form role="form" action="../sql/guardar_diagnostico.php" method="post">
+  <form role="form" action="../sql/modificar_datos_clinicos.php" method="post">
                                         
-                                        <div class="col-md-3">
+                                             <div class="col-md-3">
                                                <label>Peso:</label>
-                                            <input class="form-control" name="peso" required="Nombre" value="">
+                                            <input class="form-control" name="peso" required="Nombre" value="<?php echo $row['peso'];  ?>">
                                         </div>
 
                                         <div class="col-md-3">
                                                <label>Temperatura:</label>
-                                            <input class="form-control" name="temperatura" required="Apellido" value="">
+                                            <input class="form-control" name="temperatura" required="Apellido" value="<?php echo $row['temperatura'];  ?>">
                                        </div>
                                         <div class="col-md-3">
                                                <label>Altura:</label>
-                                            <input class="form-control" name="altura" value="">
+                                            <input class="form-control" name="altura" value="<?php echo $row['altura'];  ?>">
                                         </div>
                                         <div class="col-md-3">
                                                <label>Presion:</label>
-                                            <input class="form-control" name="presion" value="">
+                                            <input class="form-control" name="presion" value="<?php echo $row['presion'];  ?>">
                                         </div>
                                         <div class="col-md-4">
                                         <br>
                                              <label>Fecha:</label>
-                                            <input type="date" class="form-control" name="fecha" value="">
+                                            <input type="date" class="form-control" name="fecha" value="<?php echo $row['fecha_visita'];  ?>">
                                         </div>
                                         <div class="col-md-4">
                                         <br>
@@ -156,9 +154,11 @@ include("../sql/mostrar.php");
                                         <div class="col-md-4">
                                         <br>
                                           <label>Observaciones:</label>
-                                            <input class="form-control" name="observaciones" value="">
+                                            <input class="form-control" name="observaciones" value="<?php echo $row['diagnostico_preliminar'];  ?>">
                                         </div>  
-                                        <input type="hidden" name="id_paciente" value="<?php echo $id_paciente;?>"><input type="hidden" name="id_datos_clinicos" value="<?php echo $id_datos_clinicos;?>">
+                                        <input type="hidden" name="id_datos_clinicos" value="<?php echo $id_datos_clinicos;?>">
+                                        <div class="col-md-12">
+                                        <input type="hidden" name="id_paciente" value="<?php echo $id_paciente;?>">
                                         <div class="col-md-12">
                                         <br>
                                          <button class="col-md-2"> Guardar  </button> 
@@ -166,61 +166,11 @@ include("../sql/mostrar.php");
                                     <br>
                                     <br>
                                         </div>
+
+                                      
                                     </form>
-
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
-
-                                        <tr>
-                                            <th>Peso</th>
-                                            <th>Temperatura</th>
-                                            <th>Altura</th>
-                                            <th>Presion</th>
-                                            <th>Fecha</th>
-                                            <th>Prioridad</th>
-                                            <th>Observacion</th>                          
-                                            <th>Operacion</th>
-
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php 
-                    @session_start();
-
-            include("../sql/conexion.php");
-        
-
-            $query = "SELECT id_datos_clinicos,peso ,temperatura, altura, presion,fecha_visita,diagnostico_preliminar,id_paciente,prioridad_atencion.prioridad_atencion FROM  datos_clinicos INNER JOIN prioridad_atencion ON prioridad_atencion.id_prioridad_atencion = datos_clinicos.id_prioridad_atencion WHERE id_paciente = $id_paciente";
-            $resultado = $conexion -> query($query);
-
-            while ($row = $resultado -> fetch_assoc()) {
-
-         ?>
-                               
-          <tr>
-         <td><?php echo $row['peso']; ?> </td>
-         <td><?php echo $row['temperatura']; ?> </td>
-         <td><?php echo $row['altura']; ?> </td>
-         <td><?php echo $row['presion']; ?> </td>
-         <td><?php echo $row['fecha_visita']; ?> </td>
-         <td><?php echo $row['prioridad_atencion']; ?> </td>
-         <td><?php echo $row['diagnostico_preliminar']; ?> </td>
-
-         <th> <a href="modifcar_datos_clinicos.php?id=<?php echo $row['id_paciente']; ?>&id1=<?php echo $row['id_datos_clinicos']; ?>"> Modificar</a> 
-          | <a href="modulos/eliminar.php?id=<?php echo $row['id_paciente']; ?>"> Eliminar</a> 
-             </th>
-    
-         </tr>
-         <?php 
-}
-         ?>
-                                       
-
-                            </tbody>
-                                </table>
                             </div>
-                            </div>
+                        </div>
                     </div>
                     <!--End Advanced Tables -->
                 </div>
