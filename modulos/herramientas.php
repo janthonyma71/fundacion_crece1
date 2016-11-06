@@ -105,23 +105,17 @@ include("../sql/mostrar.php");
                                        
                                     <form role="form" action="../sql/modificar_perfil.php" method="post">
                                         
-                                        <div class="col-md-7">
-                                               <label>Usuario:</label>
-                                            <input class="form-control" name="peso" required="Nombre" value="<?php echo $usuario2;  ?>">
-                                        </div>
+                                        
 
                                         <div class="col-md-7">
                                                <label>Nombre:</label>
-                                            <input class="form-control" name="temperatura" required="Apellido" value="<?php echo $nombre;  ?>">
+                                            <input class="form-control" name="nombre" required="Apellido" value="<?php echo $nombre;  ?>">
                                        </div>
                                         <div class="col-md-7">
                                                <label>Apellido:</label>
-                                            <input class="form-control" name="altura" value="<?php echo $apellido;  ?>">
+                                            <input class="form-control" name="apellido" value="<?php echo $apellido;  ?>">
                                         </div>
-                                        <div class="col-md-7">
-                                               <label>Genero:</label>
-                                            <input class="form-control" name="presion" value="<?php echo $genero2;  ?>">
-                                        </div>
+                                       
                                         <div class="col-md-7">
                                         <br>
                                              <label>Fecha:</label>
@@ -134,7 +128,7 @@ include("../sql/mostrar.php");
                                         </div>
 
 
-                                                                        
+                                           <input type="hidden" name="id_usuario" value="<?php echo $id_usuario;?>"> <input type="hidden" name="id_datos_generales" value="<?php echo $id_datos_generales;?>">
                                          
                                        
                                         <div class="col-md-12">
@@ -149,7 +143,7 @@ include("../sql/mostrar.php");
                                         </div>
                                     </form>
                                       <div class="col-md-12">
-                                       <button type="submit" class="btn btn-primary col-md-6" data-toggle="modal" data-target="#myModal"> CAMBIAR CONTRASEÑA </button>
+                                       <button type="submit" class="btn btn-primary col-md-6" data-toggle="modal" data-target="#myModal"> CAMBIAR USUARIO O CONTRASEÑA </button>
                                         <br>
  <!-- Modal -->
         <form action="../sql/modificar_contraseña.php" method="post" accept-charset="utf-8">       
@@ -163,8 +157,10 @@ include("../sql/mostrar.php");
                 <h4 class="modal-title" id="myModalLabel">Eliminar paciente</h4>
               </div>
               <div class="modal-body">
-                ¿Estás seguro de eliminar esta información?
-                <input type="hidden" name="id_paciente" value="<?php echo $row['id_paciente']; ?>">
+<div class="col-md-7">
+                                               <label>Usuario:</label>
+                                            <input class="form-control" name="usuario" required="Nombre" value="<?php echo $usuario2;  ?>">
+                                        </div>                <input type="hidden" name="id_paciente" value="<?php echo $row['id_paciente']; ?>">
                 <input type="hidden" name="id_datos_generales" value="<?php echo $row['id_datos_generales']; ?>">
               </div>
               <div class="modal-footer">

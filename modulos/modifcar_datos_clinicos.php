@@ -18,7 +18,10 @@
     <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-<?php include("../sql/mostrar.php");
+<?php 
+                    @session_start();
+
+include("../sql/mostrar.php");
   ?>
 
 
