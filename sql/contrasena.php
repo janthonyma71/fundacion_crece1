@@ -7,10 +7,16 @@ $contra= $_POST['password'];
 $password= md5($contra);
 
 /*Se toma de sesion el usuario y si es el mismo que el post trae, entonces quiere modificar la contraseña, pero si trae diferente un usuario diferente al de sesion, quiere decir que quiere modificar el usuario*/
-if (isset($_SESSION['u_usuario']) && $_SESSION['u_usuario'] == $usuario) {
+if ($_SESSION['u_usuario'] != $usuario && $_SESSION['p_password'] != $contra) {
+	$sql="UPDATE usuario SET password = '$password', usuario = '$usuario' WHERE id_usuario = $id_usuario";
+	$resultado = $conexion -> query($sql);
+	//echo "<br>La contra y el usuario son diferentes al de sesion, se actualiza el usuario y la contra";
+	header("location: ../index.html");
+}else if (isset($_SESSION['u_usuario']) && $_SESSION['u_usuario'] == $usuario) {
 	$sql="UPDATE usuario SET password = '$password' WHERE id_usuario = $id_usuario";
 	$resultado = $conexion -> query($sql);
 	echo "<br>Cuando el usuario es el mismo en sesión, pero la contraseña no; se actualizó la contraseña";
+	header("location: ../index.html");
 }else{
 	//Se verifica si el usuario existe
 	$sql= "SELECT * FROM usuario where usuario = '$usuario'";
@@ -19,7 +25,8 @@ if (isset($_SESSION['u_usuario']) && $_SESSION['u_usuario'] == $usuario) {
 	if ($fila==0) {
 		$sql= "UPDATE  usuario SET usuario='$usuario' WHERE id_usuario ='$id_usuario'";
 		$resultado1 = $conexion -> query($sql);
-		echo "Actualizo correctamente el usuario";
+		//echo "Sólo se cambio el usuario";
+		header("location: ../index.html");
 	}else{
 		echo "Este usuario ya existe";
 	}	

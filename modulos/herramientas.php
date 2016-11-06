@@ -135,7 +135,7 @@ include("../sql/mostrar.php");
                     </div>
                     <div class="modal-body">
                       <input type="text" name="usuario" value="<?php echo $usuario2;  ?>" placeholder="">
-                      <input type="text" name="password"  value="<?php echo $password;  ?>" placeholder="">
+                      <input type="text" name="password"  value="<?php echo $password1;  ?>" placeholder="">
                       <input type="text" name="id_usuario"  placeholder="" value="<?php echo $id_usuario;?>">
                     </div>
                     <div class="modal-footer">
@@ -165,43 +165,9 @@ include("../sql/mostrar.php");
      <!-- DATA TABLE SCRIPTS -->
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-        <script>
-            $(document).ready(function () {
-                $('#dataTables-example').dataTable();
-            });
-
-             $(function(){
-        $('#enviar').on('click', function(e){
-          e.preventDefault();
-
-          var usuario = $('#usuario').val();
-          var password = $('#password').val();
-          var id_usuario = $('#id_usuario').val();
-
-          $.ajax({
-            type: "POST",
-            url: "../sql/contrasena.php",
-            data: ('usuario='+usuario+'&id_usuario'+id_usuario+'&password'+password),
-
-            success: function(respuesta){
-
-              alert(respuesta);
-            }
-
-          })          
-        })
-
-      })
-
-
-
-    </script>
-         <!-- Custom Js -->
-    <script src="assets/js/custom-scripts.js"></script>
-    
-    <script type="text/javascript">
-     
-    </script>
-   
+    <!-- Custom Js -->
+    <script src="assets/js/custom-scripts.js"></script>    
+    <script type="text/javascript">     
+    </script>   
 </body>
 </html>

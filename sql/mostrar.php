@@ -2,6 +2,7 @@
 @session_start();
 if (isset($_SESSION['u_usuario'] )) {
 $comp=$_SESSION['u_usuario'];
+$password1 = $_SESSION['p_password'];
 require("conexion.php");
 $query = "SELECT id_usuario,datos_generales.id_datos_generales,datos_generales.nombre, datos_generales.apellido, usuario,password, datos_generales.fecha_nacimiento, datos_generales.genero FROM usuario INNER JOIN datos_generales ON usuario.id_datos_generales = datos_generales.id_datos_generales  WHERE usuario='$comp'";
             $resultado = $conexion -> query($query);
