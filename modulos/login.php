@@ -10,7 +10,6 @@ $contra = md5($contraa);
 		$_SESSION['p_password'] = $contraa;
 		header("location: ../home.php");
 	}else{
-		echo '<script language="javascript">alert("juas");</script>';
-		header("location: ../index.html");
+		header("location: ../index.php?error=1");
 	}
 ?>

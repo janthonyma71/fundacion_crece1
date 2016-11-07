@@ -48,24 +48,18 @@ include("sql/mostrar.php");
                 <!-- /.dropdown -->
             </ul>
         </nav>
-        <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
-		<div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
+          <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <li>
-                        <a class="active-menu" href="home.php"><i class="fa fa-edit"></i> Agregar usuario</a>
-                    </li>
-                    <li>
-                        <a href="agregar_paciente.php"><i class="fa fa-edit"></i> Agregar paciente</a>
-                    </li>
-					<li>
-                        <a href="historial_medico.php"><i class="fa fa-bar-chart-o"></i> Historial Medico</a>
-                    </li>                   
+ <?php include_once('sql/pantallas.php') ?>
+
+
                 </ul>
             </div>
         </nav>
-        <!-- /. NAV SIDE  -->
+        
         <div id="page-wrapper">
             <div id="page-inner">			
                 <div class="row">

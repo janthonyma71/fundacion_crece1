@@ -17,6 +17,6 @@ $query = "SELECT id_usuario,datos_generales.id_datos_generales,datos_generales.n
    $id_datos_generales = $row['id_datos_generales'];
     }
    }else{
-    header("location: index.html");
+    header("location: index.php");
   }
 ?>

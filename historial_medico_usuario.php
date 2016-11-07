@@ -111,34 +111,9 @@ include("sql/mostrar.php");
                  <td><?php echo $row['alergias']; ?> </td>
                  <td><?php echo $row['responsable']; ?> </td>
                  <td><?php echo $row['numero_documento']; ?> </td>
-                 <th> <a href="modulos/modificar.php?id=<?php echo $row['id_paciente']; ?>"> Modificar</a> |
-                 <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
-                 | <a href="" data-toggle="modal" data-target="#myModal"> Eliminar</a> 
-                 <!-- Button trigger modal --><!-- Modal -->
-                  <form action="sql/eliminar_paciente.php" method="post" accept-charset="utf-8">       
-                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                      <div class="modal-content">
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                          <h4 class="modal-title" id="myModalLabel">Eliminar paciente</h4>
-                        </div>
-                        <div class="modal-body">
-                          ¿Estás seguro de eliminar esta información?
-                          <input type="hidden" name="id_paciente" value="<?php echo $row['id_paciente']; ?>">
-                          <input type="hidden" name="id_datos_generales" value="<?php echo $row['id_datos_generales']; ?>">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="submit" class="btn btn-primary">Si</button>
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  </form>
-                  <!--FIN-->
+                 <th> 
+                 <a href="modulos/diagnostico_general_usuario.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
+                 
               </th>
               </tr><?php  } ?>                                           
               </tbody>

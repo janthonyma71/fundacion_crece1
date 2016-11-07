@@ -74,7 +74,7 @@ include("../sql/mostrar.php");
              <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            Diagnostico General <small>                               <a href="../historial_medico.php" ><button class="btn btn-default"> Regresar a la tabla</button> </a>
+                            Diagnostico General <small>                               <a href="../historial_medico_usuario.php" ><button class="btn btn-default"> Regresar a la tabla</button> </a>
 </small>
                         </h1>
                     </div>

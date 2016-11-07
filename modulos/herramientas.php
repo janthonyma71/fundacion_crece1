@@ -53,25 +53,18 @@ include("../sql/mostrar.php");
                 <!-- /.dropdown -->
             </ul>
         </nav>
-        <!--/. NAV TOP  -->
-        <nav class="navbar-default navbar-side" role="navigation">
+               <!--/. NAV TOP  -->
+    <nav class="navbar-default navbar-side" role="navigation">
+        <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                  <li>
-                        <a  href="../home.php"><i class="fa fa-edit"></i> Agregar usuario</a>
-                    </li>
-                    <li>
-                        <a  href="../agregar_paciente.php"><i class="fa fa-edit"></i> Agregar paciente</a>
-                    </li>
-                    <li>
-                        <a class="active-menu" href="../historial_medico.php"><i class="fa fa-bar-chart-o"></i> Historial Medico</a>
-                    </li>
-                        </ul>
-                    </li>                 
+ <?php include_once('../sql/pantallas.php') ?>
+
+
                 </ul>
             </div>
         </nav>
-        <!-- /. NAV SIDE  -->
+        
         <div id="page-wrapper" >
             <div id="page-inner">
              <div class="row">
@@ -112,10 +105,19 @@ include("../sql/mostrar.php");
                         <div class="col-md-12">
                           <button class="col-md-6"> Guardar</button> 
                           <br>
+                                                  <div class="col-md-7">
+
+                            <?php 
+                          if (isset($_GET['mod']) == 1) {
+                            echo  '<font color="#1e9500"">¡Excelente! Datos modificados </font>';
+                          }
+                               ?>
                           <br>
+                        </div>
                         </div>
                           <br><br>
                           </form>
+
                         </div>
             <!--INICIO-->
             <!-- Button trigger modal -->
@@ -131,16 +133,27 @@ include("../sql/mostrar.php");
                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
-                      <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                      <h4 class="modal-title" id="myModalLabel">Modificar Usuario & Contraseña</h4>
                     </div>
                     <div class="modal-body">
-                      <input type="text" name="usuario" value="<?php echo $usuario2;  ?>" placeholder="">
-                      <input type="text" name="password"  value="<?php echo $password1;  ?>" placeholder="">
-                      <input type="text" name="id_usuario"  placeholder="" value="<?php echo $id_usuario;?>">
+                    <div class="col-md-7">
+                                        <br>
+                                          <label>usuario:</label>
+                      <input class="form-control" type="text" name="usuario" value="<?php echo $usuario2;  ?>" placeholder="">
+                                        </div>   <div class="col-md-7">
+                                        <br>
+                                          <label>Contraseña:</label>
+                      <input class="form-control" type="password" name="password"  value="<?php echo $password1;  ?>" placeholder="">
+                                        </div> 
+                      <input type="hidden" name="id_usuario"  placeholder="" value="<?php echo $id_usuario;?>">
                     </div>
+
                     <div class="modal-footer">
+                                                            <div class="col-md-7">
+<br>
                       <button type="submit" class="btn btn-primary">Modificar</button>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
                     </div>
                   </div>
                 </div>
@@ -165,35 +178,8 @@ include("../sql/mostrar.php");
      <!-- DATA TABLE SCRIPTS -->
     <script src="assets/js/dataTables/jquery.dataTables.js"></script>
     <script src="assets/js/dataTables/dataTables.bootstrap.js"></script>
-<<<<<<< HEAD
         <script>
-            $(document).ready(function () {
-                $('#dataTables-example').dataTable();
-            });
-
-             $(function(){
-        $('#enviar').on('click', function(e){
-          e.preventDefault();
-
-          var formu = $('#formu').val();
-
-
-          $.ajax({
-            type: "POST",
-            url: "../sql/contrasena.php",
-            data: ('formu='+formu),
-
-            success: function(respuesta){
-
-              alert(respuesta);
-            }
-
-          })          
-        })
-
-      })
-
-
+  
 
     </script>
          <!-- Custom Js -->
@@ -203,11 +189,9 @@ include("../sql/mostrar.php");
      
     </script>
    
-=======
     <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>    
     <script type="text/javascript">     
     </script>   
->>>>>>> 25a3370a3f5a90d82ca9c73350367f0c254022d5
 </body>
 </html>

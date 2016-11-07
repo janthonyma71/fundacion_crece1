@@ -16,6 +16,8 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />      
 </head>
 <body>
+
+
 <?php 
 include("sql/mostrar.php");
 ?>
@@ -55,24 +57,17 @@ include("sql/mostrar.php");
             <!-- /.dropdown -->
         </ul>
     </nav>
-    <!--/. NAV TOP  -->
+       <!--/. NAV TOP  -->
     <nav class="navbar-default navbar-side" role="navigation">
         <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
-                    <li>
-                        <a  href="home.php"><i class="fa fa-edit"></i> Agregar usuario</a>
-                    </li>
-                    <li>
-                        <a class="active-menu" href="agregar_paciente.php"><i class="fa fa-edit"></i> Agregar paciente</a>
-                    </li>
-                    <li>
-                        <a href="historial_medico.php"><i class="fa fa-bar-chart-o"></i> Historial Medico</a>
-                    </li>                   
+ <?php include_once('sql/pantallas.php') ?>
+
+
                 </ul>
             </div>
         </nav>
-        <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">                
                 <div class="row">
@@ -110,7 +105,7 @@ include("sql/mostrar.php");
                             </div>
                             <div class="form-group">
                                    <label>Numero de documento:</label>
-                                <input class="form-control" name="numero_documento">
+                                <input class="form-control" type="text" maxlength="17" name="numero_documento" >
                             </div>
                             <div class="form-group">
                                    <label>Alergias:</label>
@@ -123,6 +118,7 @@ include("sql/mostrar.php");
                                 <button type="submit" class="btn btn-default" name="submit">Enviar informacion</button>
                                 <button type="reset" class="btn btn-default">Borrar casillas</button>
                         </form>
+
                     <div class="text-right">
                 </div>
             </div>
@@ -138,6 +134,9 @@ include("sql/mostrar.php");
     </div>
     <!-- /. WRAPPER  -->
     <!-- JS Scripts-->
+    <script>
+
+</script>
     <!-- jQuery Js -->
     <script src="assets/js/jquery-1.10.2.js"></script>
     <!-- Bootstrap Js -->
