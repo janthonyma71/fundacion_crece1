@@ -107,92 +107,101 @@ include("../sql/mostrar.php");
             $resultado = $conexion -> query($query);
 
             $query = "SELECT id_paciente,alergias, responsable, numero_documento,documento, datos_generales.id_datos_generales,datos_generales.nombre, datos_generales.apellido, datos_generales.genero, datos_generales.fecha_nacimiento FROM  paciente INNER JOIN datos_generales ON datos_generales.id_datos_generales = paciente.id_datos_generales WHERE id_paciente ='" . $_GET['id'] . "'";
-           
-
-
             $resultado = $conexion -> query($query);
-
             $row = $resultado -> fetch_assoc();
-
             $id_datos_generales = $row['id_datos_generales'];
             $id_paciente = $row['id_paciente'];
-
-         ?>
-                               
-
-                                       
+         ?>                                     
   <form role="form" action="../sql/guardar_diagnostico.php" method="post">
-                                        
-                                        <div class="col-md-3">
-                                               <label>Peso:</label>
-                                            <input class="form-control" name="peso" required="Nombre" value="">
-                                        </div>
+            <div class="col-md-12">
+                <div class="col-md-4">
+                  <label>¿Es álergico a la penicilina? </label>
+                  <label class="radio-inline"> <input type="radio" class="w3-radio" name="penicilina" value="Si" placeholder=""> 
+                     Si </label> 
+                  <label class="radio-inline"> <input type="radio" class="w3-radio" name="penicilina" value="No" placeholder="">
+                    Si </label>
+                </div>
+                <div class="col-md-4">
+                  <input type="radio" name="" value="" placeholder=""> Prueba
+                </div>
+                <div class="col-md-4">
+                  <input type="radio" name="" value="" placeholder=""> Hola
+                </div>
+            </div>
 
-                                        <div class="col-md-3">
-                                               <label>Temperatura:</label>
-                                            <input class="form-control" name="temperatura" required="Apellido" value="">
-                                       </div>
-                                        <div class="col-md-3">
-                                               <label>Altura:</label>
-                                            <input class="form-control" name="altura" value="">
-                                        </div>
-                                        <div class="col-md-3">
-                                               <label>Presion:</label>
-                                            <input class="form-control" name="presion" value="">
-                                        </div>
-                                        <div class="col-md-4">
-                                        <br>
-                                             <label>Fecha:</label>
-                                            <input type="date" class="form-control" name="fecha" value="">
-                                        </div>
-                                        <div class="col-md-4">
-                                        <br>
-                                        <label>Prioridad Atencion:</label>
-                                        <select class="form-control" name ="prioridad" >
-                                                 <?php
-                                                include('sql/conexion.php');
-                                                $sql = "SELECT id_prioridad_atencion, prioridad_atencion FROM prioridad_atencion";
-                                                $resultado = $conexion -> query($sql);
-                                                while( $row = $resultado -> fetch_assoc()){                 
-                                                ?>                                          
-                                          <option value="<?php echo $row['prioridad_atencion'];?>"><?php echo $row['prioridad_atencion'];?></option>                      
-                                          <?php } ?>
-                                        </select>
-                                        </div>
-                                                                        
-                                        <div class="col-md-4">
-                                        <br>
-                                          <label>Observaciones:</label>
-                                            <input class="form-control" name="observaciones" value="">
-                                        </div>  
-                                        <input type="hidden" name="id_paciente" value="<?php echo $id_paciente;?>"><input type="hidden" name="id_datos_clinicos" value="<?php echo $id_datos_clinicos;?>">
-                                        <div class="col-md-12">
-                                        <br>
-                                         <button class="col-md-2"> Guardar  </button> 
-                                           <br>
-                                    <br>
-                                    <br>
-                                        </div>
-                                    </form>
+            <div class="col-md-12">
+              <br>                  
+                <div class="col-md-3">
+                       <label>Peso:</label>
+                    <input class="form-control" name="peso" required="Nombre" value="">
+                </div>
 
-                                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                                    <thead>
+                <div class="col-md-3">
+                       <label>Temperatura:</label>
+                    <input class="form-control" name="temperatura" required="Apellido" value="">
+               </div>
+                <div class="col-md-3">
+                       <label>Altura:</label>
+                    <input class="form-control" name="altura" value="">
+                </div>
+                <div class="col-md-3">
+                       <label>Presion:</label>
+                    <input class="form-control" name="presion" value="">
+                </div>
+            </div>
 
-                                        <tr>
-                                            <th>Peso</th>
-                                            <th>Temperatura</th>
-                                            <th>Altura</th>
-                                            <th>Presion</th>
-                                            <th>Fecha</th>
-                                            <th>Prioridad</th>
-                                            <th>Observacion</th>                          
-                                            <th>Operacion</th>
+            <div class="col-md-12">
+                <div class="col-md-4">
+                <br>
+                     <label>Fecha:</label>
+                    <input type="date" class="form-control" name="fecha" value="">
+                </div>
+                <div class="col-md-4">
+                <br>
+                <label>Prioridad Atencion:</label>
+                <select class="form-control" name ="prioridad" >
+                         <?php
+                        include('sql/conexion.php');
+                        $sql = "SELECT id_prioridad_atencion, prioridad_atencion FROM prioridad_atencion";
+                        $resultado = $conexion -> query($sql);
+                        while( $row = $resultado -> fetch_assoc()){                 
+                        ?>                                          
+                  <option value="<?php echo $row['prioridad_atencion'];?>"><?php echo $row['prioridad_atencion'];?></option>                      
+                  <?php } ?>
+                </select>
+                </div>
+                                                
+                <div class="col-md-4">
+                <br>
+                  <label>Observaciones:</label>
+                    <input class="form-control" name="observaciones" value="">
+                </div>
+            </div>
+                <input type="hidden" name="id_paciente" value="<?php echo $id_paciente;?>"><input type="hidden" name="id_datos_clinicos" value="<?php echo $id_datos_clinicos;?>">
+                <div class="col-md-12">
+                <br>
+                 <button class="col-md-2"> Guardar  </button> 
+                   <br>
+            <br>
+            <br>
+                </div>
+            </form>
 
-
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                    <?php 
+        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+            <thead>
+                <tr>
+                    <th>Peso</th>
+                    <th>Temperatura</th>
+                    <th>Altura</th>
+                    <th>Presion</th>
+                    <th>Fecha</th>
+                    <th>Prioridad</th>
+                    <th>Observacion</th>                          
+                    <th>Operacion</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php 
                     @session_start();
 
             include("../sql/conexion.php");
