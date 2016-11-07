@@ -105,7 +105,7 @@ include("sql/mostrar.php");
               <tbody>
               <?php 
                 include("sql/conexion.php");
-                $query = "SELECT usuario, estado, datos_generales.nombre, datos_generales.apellido ,datos_generales.genero FROM `usuario` INNER JOIN datos_generales on usuario.id_datos_generales = datos_generales.id_datos_generales";
+                $query = "SELECT id_usuario,usuario, estado, datos_generales.nombre, datos_generales.apellido ,datos_generales.genero FROM `usuario` INNER JOIN datos_generales on usuario.id_datos_generales = datos_generales.id_datos_generales";
                 $resultado = $conexion -> query($query);
                 while ($row = $resultado -> fetch_assoc()) {
               ?>                               
@@ -115,7 +115,7 @@ include("sql/mostrar.php");
                  <td><?php echo $row['usuario']; ?> </td>
                  <td><?php echo $row['estado']; ?> </td>
                  <td><?php echo $row['genero']; ?> </td>
-                 <th> <a href="modulos/modificar.php?id=<?php echo $row['id_paciente']; ?>"> Modificar</a> 
+                 <th> <a href="modulos/modificar.php?id=<?php echo $row['id_usuario']; ?>"> Modificar</a> 
              
               </th>
               </tr><?php  } ?>                                           
