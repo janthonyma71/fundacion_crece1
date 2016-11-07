@@ -122,7 +122,7 @@ include("sql/mostrar.php");
                  <a href="modulos/diagnostico_general.php?id=<?php echo $row['id_paciente'];?>"> Añadir Datos Clinicos</a> 
                  | <a href="" data-toggle="modal" data-target="#myModal"> Eliminar</a> 
                  <!-- Button trigger modal --><!-- Modal -->
-                  <form action="sql/eliminar_paciente.php" method="post" accept-charset="utf-8">       
+                  <form action="sql/eliminar_paciente.php?id=<?php echo $row['id_paciente']; ?>" method="post" accept-charset="utf-8">       
                   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
