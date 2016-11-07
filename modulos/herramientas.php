@@ -31,7 +31,7 @@ include("../sql/mostrar.php");
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="home.php"><i class="fa fa-gear"></i> <strong>CRECE</strong></a>
+        <a class="navbar-brand" href="#"><i class="fa fa-gear"></i> <strong>CRECE</strong></a>
             </div>
             <ul class="nav navbar-top-links navbar-right">      
               <!-- /.dropdown -->

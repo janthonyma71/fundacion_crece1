@@ -30,7 +30,7 @@ include("sql/mostrar.php");
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="home.php"><i class="fa fa-gear"></i> <strong>CRECE</strong></a>
+        <a class="navbar-brand" href="#"><i class="fa fa-gear"></i> <strong>CRECE</strong></a>
       </div>
         <ul class="nav navbar-top-links navbar-right">              
           <!-- /.dropdown -->
@@ -97,7 +97,6 @@ include("sql/mostrar.php");
                           <th>Nombre</th>
                           <th>Apellido</th>
                           <th>Usuario</th>
-                          <th>Estado</th>
                           <th>Genero</th>
                           <th>Operacion</th>
                         </tr>
@@ -113,7 +112,6 @@ include("sql/mostrar.php");
                  <td><?php echo $row['nombre']; ?> </td>
                  <td><?php echo $row['apellido']; ?> </td>
                  <td><?php echo $row['usuario']; ?> </td>
-                 <td><?php echo $row['estado']; ?> </td>
                  <td><?php echo $row['genero']; ?> </td>
                  <th> <a href="modulos/modificar.php?id=<?php echo $row['id_usuario']; ?>"> Modificar</a> 
              

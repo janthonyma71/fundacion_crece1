@@ -16,9 +16,11 @@ $query = "SELECT * FROM usuario WHERE usuario='$usuario' AND password='$contra'"
     
     if ($id_rol==1) {
 		header("location: ../home.php");
+		
     }
     else{
     			header("location: ../agregar_paciente.php");
+
 
     }
 	}else{

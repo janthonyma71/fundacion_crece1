@@ -1,5 +1,6 @@
 <?php 
 require("conexion.php");
+include('mostrar.php');
 
 $peso= $_POST['peso'];
 $temperatura= $_POST['temperatura'];
@@ -33,9 +34,17 @@ $id_datos_clinicos = $_POST['id_datos_clinicos'];
            
 	$sql="INSERT INTO paciente (id_datos_generales,alergias,documento,responsable,numero_documento) VALUES ('$id_datos_generales','$alergias','$documento','$responsable','$numero_documento')";
 	$resultado = $conexion -> query($sql);*/
-
-
+if ($id_rol==1) {
 echo "<script language='javascript'>window.location='../modulos/diagnostico_general.php?id=$id_paciente'</script>"; 
+		
+    }
+    else{
+echo "<script language='javascript'>window.location='../modulos/diagnostico_general_usuario.php?id=$id_paciente'</script>"; 
+          //  header("location: ../historial_medico_usuario.php");
+
+
+    }
+
 
  ?>
 

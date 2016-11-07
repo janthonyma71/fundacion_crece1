@@ -1,5 +1,6 @@
 <?php 
 require("conexion.php");
+include('mostrar.php');
 
 $peso= $_POST['peso'];
 $temperatura= $_POST['temperatura'];
@@ -28,7 +29,15 @@ $id_paciente = $_POST['id_paciente'];
            
 	$sql="INSERT INTO paciente (id_datos_generales,alergias,documento,responsable,numero_documento) VALUES ('$id_datos_generales','$alergias','$documento','$responsable','$numero_documento')";
 	$resultado = $conexion -> query($sql);*/
+          if ($id_rol==1) {
             header("location: ../historial_medico.php");
+		
+    }
+    else{
+            header("location: ../historial_medico_usuario.php");
+
+
+    } 
 
  ?>
 
