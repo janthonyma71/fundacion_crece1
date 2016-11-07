@@ -17,6 +17,8 @@
 </head>
 <body>
 <?php 
+@session_start();
+
 include("sql/mostrar.php");
 ?><div id="wrapper">
     <nav class="navbar navbar-default top-navbar" role="navigation">
@@ -53,7 +55,10 @@ include("sql/mostrar.php");
         <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
- <?php include_once('sql/pantallas.php') ?>
+ <?php 
+@session_start();
+
+ include_once('sql/pantallas.php') ?>
 
 
                 </ul>

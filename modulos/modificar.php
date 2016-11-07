@@ -18,7 +18,8 @@
     <link href="../assets/js/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
 </head>
 <body>
-<?php include("../sql/mostrar.php");
+<?php @session_start();
+include("../sql/mostrar.php");
  ?>
 
     <div id="wrapper">
@@ -60,7 +61,8 @@
         <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
- <?php include_once('../sql/pantalla_modulo.php') ?>
+ <?php @session_start();
+ include_once('../sql/pantalla_modulo.php') ?>
 
 
                 </ul>

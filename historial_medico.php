@@ -18,6 +18,8 @@
 </head>
 <body>
 <?php 
+@session_start();
+
 include("sql/mostrar.php");
 ?>
   <div id="wrapper">
@@ -62,7 +64,10 @@ include("sql/mostrar.php");
         <div id="sideNav" href=""><i class="fa fa-caret-right"></i></div>
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
- <?php include_once('sql/pantallas.php') ?>
+ <?php 
+@session_start();
+
+ include_once('sql/pantallas.php') ?>
 
 
                 </ul>
@@ -103,6 +108,8 @@ include("sql/mostrar.php");
                 include("sql/conexion.php");
                 $query = "SELECT id_paciente,alergias, responsable, numero_documento, datos_generales.nombre, datos_generales.apellido, datos_generales.id_datos_generales FROM  paciente INNER JOIN datos_generales ON datos_generales.id_datos_generales = paciente.id_datos_generales";
                 $resultado = $conexion -> query($query);
+
+                
                 while ($row = $resultado -> fetch_assoc()) {
               ?>                               
                <tr>
