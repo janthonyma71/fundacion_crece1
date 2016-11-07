@@ -118,6 +118,29 @@ include("sql/mostrar.php");
                                         <button type="submit" class="btn btn-default">Enviar informacion</button>
                                         <button type="reset" class="btn btn-default">Borrar casillas</button>
                                     </form>
+                                     <?php
+                            if (isset($_GET['mod'])) {
+                             
+                         if ($_GET['mod'] == 1) {
+                            echo  '<font color="#1e9500"">¡Excelente! Ingreso Usuario </font>';
+                          }
+                                                     
+                             } 
+                          
+                             else if (isset($_GET['error'])) {
+                             
+                          if ($_GET['error'] == 2) {
+                            echo  '<font color="#FE2E2E"">ERROR! USUARIO YA EXISTE </font>';
+                          }
+                           
+                             } 
+                             else{
+
+
+                             }
+                         
+                         
+                               ?>
                                 <div class="text-right">
                             </div>
                         </div>

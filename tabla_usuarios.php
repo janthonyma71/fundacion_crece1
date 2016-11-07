@@ -77,7 +77,7 @@ include("sql/mostrar.php");
             <div class="row">
               <div class="col-md-12">
                 <h1 class="page-header">
-                  Tabla De Pacientes <small></small>
+                  Tabla De Usuarios <small></small>
                 </h1>
               </div>
             </div>
@@ -87,7 +87,7 @@ include("sql/mostrar.php");
               <!-- Advanced Tables -->
                 <div class="panel panel-default">
                   <div class="panel-heading">
-                    PACIENTES                        
+                    Usuario                        
                   </div>
                   <div class="panel-body">
                     <div class="table-responsive">
@@ -113,7 +113,7 @@ include("sql/mostrar.php");
                  <td><?php echo $row['apellido']; ?> </td>
                  <td><?php echo $row['usuario']; ?> </td>
                  <td><?php echo $row['genero']; ?> </td>
-                 <th> <a href="modulos/modificar.php?id=<?php echo $row['id_usuario']; ?>"> Modificar</a> 
+                 <th> <a href="modulos/modificar_usuarios.php?id=<?php echo $row['id_usuario']; ?>"> Modificar</a> 
              
               </th>
               </tr><?php  } ?>                                           

@@ -113,21 +113,7 @@ include("../sql/mostrar.php");
             $id_paciente = $row['id_paciente'];
          ?>                                     
   <form role="form" action="../sql/guardar_diagnostico.php" method="post">
-            <div class="col-md-12">
-                <div class="col-md-4">
-                  <label>¿Es álergico a la penicilina? </label>
-                  <label class="radio-inline"> <input type="radio" class="w3-radio" name="penicilina" value="Si" placeholder=""> 
-                     Si </label> 
-                  <label class="radio-inline"> <input type="radio" class="w3-radio" name="penicilina" value="No" placeholder="">
-                    Si </label>
-                </div>
-                <div class="col-md-4">
-                  <input type="radio" name="" value="" placeholder=""> Prueba
-                </div>
-                <div class="col-md-4">
-                  <input type="radio" name="" value="" placeholder=""> Hola
-                </div>
-            </div>
+           
 
             <div class="col-md-12">
               <br>                  

@@ -71,7 +71,7 @@ include_once('../sql/pantalla_modulo.php') ?>
              <div class="row">
                     <div class="col-md-12">
                         <h1 class="page-header">
-                            MODIFICAR PERFIL<small><a href="../home.php" ><button class="btn btn-default"> Regresar al inicio</button> </a>
+                            MODIFICAR PERFIL<small>
                           </small>
                         </h1>
                     </div>

@@ -14,8 +14,17 @@ $contra= $_POST['usuario'];
 $password= md5($contra);
 
 	
+	//Se verifica si el usuario existe
+	$sql= "SELECT * FROM usuario where usuario = '$usuario'";
+	$resultado = $conexion -> query($sql) ;
+	$fila = mysqli_num_rows($resultado);
+	if ($fila==1) {
 
-	$sql= "INSERT INTO datos_generales (nombre,apellido,fecha_nacimiento,genero) VALUES('$nombre','$apellido','$fecha','$genero')";
+				header("location: 	../home.php?error=2");
+
+
+	}else{
+		$sql= "INSERT INTO datos_generales (nombre,apellido,fecha_nacimiento,genero) VALUES('$nombre','$apellido','$fecha','$genero')";
 	$resultado = $conexion -> query($sql);
 
 	$buscarID= "SELECT id_datos_generales FROM datos_generales WHERE nombre='$nombre' and apellido= '$apellido'";
@@ -32,7 +41,12 @@ $password= md5($contra);
            
 
 
-            header("location: ../home.php");
+            header("location: ../home.php?mod=1");
+	}	
+
+
+
+	
 
 
  ?>
