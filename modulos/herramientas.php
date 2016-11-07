@@ -59,7 +59,7 @@ include("../sql/mostrar.php");
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
  <?php @session_start();
-include_once('../sql/pantallas.php') ?>
+include_once('../sql/pantalla_modulo.php') ?>
 
 
                 </ul>
@@ -108,10 +108,31 @@ include_once('../sql/pantallas.php') ?>
                           <br>
                                                   <div class="col-md-7">
 
-                            <?php 
-                          if (isset($_GET['mod']) == 1) {
+                            <?php
+                            if (isset($_GET['mod'])) {
+                             
+                         if ($_GET['mod'] == 1) {
                             echo  '<font color="#1e9500"">¡Excelente! Datos modificados </font>';
                           }
+                           else if ($_GET['mod'] == 2) {
+                            echo  '<font color="#1e9500"">¡Excelente! Datos modificados </font>';
+                          }
+                           else if ($_GET['mod'] == 3) {
+                            echo  '<font color="#1e9500"">¡Excelente! Contraseña modificados </font>';
+                          }
+                           elseif ($_GET['mod'] == 4) {
+                            echo  '<font color="#1e9500"">¡Excelente! Usuario modificados </font>';
+                          }
+                           elseif ($_GET['mod'] == 5) {
+                            echo  '<font color="#FE2E2E"">¡ERROR! USUARIO YA EXISTE </font>';
+                          }
+                             } 
+                             else{
+
+
+                             }
+                         
+                         
                                ?>
                           <br>
                         </div>
